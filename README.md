@@ -23,3 +23,5 @@ Mo http://localhost:8080
 Ton kho duoc tru ngay khi tao don. Neu can sua ton kho thi vao trang kiem ke.
 
 Chay test: `python tests/test_orders.py`
+
+Ghi chu: kiem tra lai nguong canh bao sap het hang.
