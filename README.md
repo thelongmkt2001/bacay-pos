@@ -1,27 +1,27 @@
-# Ba Cay POS
+# Ba Cây POS
 
-He thong quan ly ton kho va don hang cho chuoi ca phe Ba Cay (6 cua hang).
+Hệ thống quản lý tồn kho và đơn hàng cho chuỗi cà phê Ba Cây (6 cửa hàng).
 
-## Chay
+## Chạy
 
 ```
 python server.py
 ```
 
-Mo http://localhost:8080
+Mở http://localhost:8080
 
-## Tinh nang
+## Tính năng
 
-- Ban hang tai quay, tru ton kho tu dong
-- Quan ly ton kho theo tung cua hang
-- Canh bao sap het hang
-- Bao cao doanh thu theo cua hang va theo ngay
-- Trang menu cho khach
+- Bán hàng tại quầy, trừ tồn kho tự động
+- Quản lý tồn kho theo từng cửa hàng
+- Cảnh báo sắp hết hàng
+- Báo cáo doanh thu theo cửa hàng và theo ngày
+- Trang menu cho khách
 
-## Ghi chu
+## Ghi chú
 
-Ton kho duoc tru ngay khi tao don. Neu can sua ton kho thi vao trang kiem ke.
+Tồn kho được trừ ngay khi tạo đơn. Nếu cần sửa tồn kho thì vào trang kiểm kê.
 
-Chay test: `python tests/test_orders.py`
+Chạy test: `python tests/test_orders.py`
 
-Ghi chu: kiem tra lai nguong canh bao sap het hang.
+Ghi chú: kiểm tra lại ngưỡng cảnh báo sắp hết hàng.
