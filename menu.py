@@ -2,7 +2,7 @@ from db import get_db
 
 
 def get_menu():
-    """Danh sach mon cho trang menu."""
+    """Danh sách món cho trang menu."""
     conn = get_db()
     c = conn.cursor()
     c.execute("SELECT * FROM items ORDER BY category, title")

@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="utf-8">
-<title>Ba Cay POS</title>
+<title>Ba Cây POS</title>
 <style>
 body { font-family: system-ui, sans-serif; margin: 24px; max-width: 900px; }
 h1 { font-size: 20px; }
@@ -18,22 +18,22 @@ input { width: 60px; padding: 4px; }
 </style>
 </head>
 <body>
-<h1>Ba Cay — Ban hang</h1>
+<h1>Ba Cây — Bán hàng</h1>
 
 <div>
-  Cua hang:
+  Cửa hàng:
   <select id="store"></select>
 </div>
 <div id="msg"></div>
 
 <table>
-  <thead><tr><th>Mon</th><th>Don vi</th><th>Gia</th><th>Ton kho</th><th>SL</th><th></th></tr></thead>
+  <thead><tr><th>Món</th><th>Đơn vị</th><th>Giá</th><th>Tồn kho</th><th>SL</th><th></th></tr></thead>
   <tbody id="rows"></tbody>
 </table>
 
-<h1>Don gan day</h1>
+<h1>Đơn gần đây</h1>
 <table>
-  <thead><tr><th>#</th><th>Cua hang</th><th>Mon</th><th>SL</th><th>Thanh tien</th></tr></thead>
+  <thead><tr><th>#</th><th>Cửa hàng</th><th>Món</th><th>SL</th><th>Thành tiền</th></tr></thead>
   <tbody id="orders"></tbody>
 </table>
 
@@ -53,7 +53,7 @@ async function load() {
       <td>${p.price.toLocaleString('vi-VN')}</td>
       <td>${p.stock}</td>
       <td><input type="number" id="q${p.id}" value="1" min="1"></td>
-      <td><button onclick="sell(${p.id})">Ban</button></td>
+      <td><button onclick="sell(${p.id})">Bán</button></td>
     </tr>`).join('');
 
   const os = await (await fetch('/api/orders')).json();
@@ -72,8 +72,8 @@ async function sell(id) {
   });
   const j = await r.json();
   const msg = document.getElementById('msg');
-  if (j.ok) { msg.className = 'ok'; msg.textContent = 'Da ban. Don #' + j.order_id + ' — ' + j.total.toLocaleString('vi-VN'); }
-  else { msg.className = 'err'; msg.textContent = 'Loi: ' + j.error; }
+  if (j.ok) { msg.className = 'ok'; msg.textContent = 'Đã bán. Đơn #' + j.order_id + ' — ' + j.total.toLocaleString('vi-VN'); }
+  else { msg.className = 'err'; msg.textContent = 'Lỗi: ' + j.error; }
   load();
 }
 

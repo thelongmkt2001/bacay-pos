@@ -1,5 +1,5 @@
-# TODO: chua dung - lam do dang hom truoc
-# Y tuong: khach mua tren 100k thi giam 10%, khach than thiet giam them
+# TODO: chưa dùng - làm dở dang hôm trước
+# Ý tưởng: khách mua trên 100k thì giảm 10%, khách thân thiết giảm thêm
 
 LOYALTY_TIERS = {
     "bac": 0.05,

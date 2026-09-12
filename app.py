@@ -68,11 +68,11 @@ class Handler(BaseHTTPRequestHandler):
         try:
             body = self._body()
         except Exception:
-            return self._json({"ok": False, "error": "body khong hop le"}, 400)
+            return self._json({"ok": False, "error": "body không hợp lệ"}, 400)
 
         if path == "/api/orders":
             r = orders.create_order(
-                body.get("store", "Quan 1"),
+                body.get("store", "Quận 1"),
                 int(body["product_id"]),
                 int(body.get("qty", 1)),
             )

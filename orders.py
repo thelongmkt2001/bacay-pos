@@ -3,7 +3,7 @@ from db import get_db
 
 
 def create_order(store, product_id, qty):
-    """Tao don hang moi va tru ton kho."""
+    """Tạo đơn hàng mới và trừ tồn kho."""
     conn = get_db()
     c = conn.cursor()
 
@@ -11,11 +11,11 @@ def create_order(store, product_id, qty):
     p = c.fetchone()
     if p is None:
         conn.close()
-        return {"ok": False, "error": "khong tim thay san pham"}
+        return {"ok": False, "error": "không tìm thấy sản phẩm"}
 
     if p["stock"] < qty:
         conn.close()
-        return {"ok": False, "error": "het hang"}
+        return {"ok": False, "error": "hết hàng"}
 
     now = datetime.datetime.now().isoformat()
     c.execute("INSERT INTO orders (store, created_at) VALUES (?,?)", (store, now))
@@ -33,7 +33,7 @@ def create_order(store, product_id, qty):
     c.execute("UPDATE products SET stock = stock - ? WHERE id = ?", (qty, product_id))
     c.execute(
         "INSERT INTO stock_log (product_id, delta, reason, created_at) VALUES (?,?,?,?)",
-        (product_id, -qty, "ban hang", now),
+        (product_id, -qty, "bán hàng", now),
     )
 
     conn.commit()
@@ -70,7 +70,7 @@ def list_orders(limit=50):
 
 
 def revenue_report():
-    """Tong doanh thu theo cua hang."""
+    """Tổng doanh thu theo cửa hàng."""
     conn = get_db()
     c = conn.cursor()
     c.execute(

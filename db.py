@@ -23,7 +23,7 @@ def init_db():
         stock INTEGER
     )""")
 
-    # bang menu - them sau khi lam trang menu
+    # bảng menu - thêm sau khi làm trang menu
     c.execute("""CREATE TABLE IF NOT EXISTS items (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         title TEXT,
@@ -64,29 +64,29 @@ def init_db():
 def seed(conn):
     c = conn.cursor()
     products = [
-        ("Ca phe sua da", "ly", 25000, 40),
-        ("Ca phe den da", "ly", 20000, 35),
-        ("Bac xiu", "ly", 30000, 25),
-        ("Tra dao cam sa", "ly", 45000, 12),
-        ("Banh mi thit", "cai", 35000, 8),
-        ("Croissant", "cai", 40000, 5),
-        ("Ca phe hat rang", "kg", 250000, 3),
+        ("Cà phê sữa đá", "ly", 25000, 40),
+        ("Cà phê đen đá", "ly", 20000, 35),
+        ("Bạc xỉu", "ly", 30000, 25),
+        ("Trà đào cam sả", "ly", 45000, 12),
+        ("Bánh mì thịt", "cái", 35000, 8),
+        ("Croissant", "cái", 40000, 5),
+        ("Cà phê hạt rang", "kg", 250000, 3),
     ]
     c.executemany(
         "INSERT INTO products (name, unit, price, stock) VALUES (?,?,?,?)", products
     )
 
-    # menu page dung bang rieng
+    # trang menu dùng bảng riêng
     items = [
-        ("Ca phe sua da", 25000, "do uong"),
-        ("Ca phe den da", 20000, "do uong"),
-        ("Bac xiu", 30000, "do uong"),
-        ("Tra dao cam sa", 42000, "do uong"),
-        ("Banh mi thit", 35000, "do an"),
+        ("Cà phê sữa đá", 25000, "đồ uống"),
+        ("Cà phê đen đá", 20000, "đồ uống"),
+        ("Bạc xỉu", 30000, "đồ uống"),
+        ("Trà đào cam sả", 42000, "đồ uống"),
+        ("Bánh mì thịt", 35000, "đồ ăn"),
     ]
     c.executemany("INSERT INTO items (title, price, category) VALUES (?,?,?)", items)
 
     conn.commit()
 
 
-STORES = ["Quan 1", "Quan 3", "Quan 7", "Thu Duc", "Binh Thanh", "Go Vap"]
+STORES = ["Quận 1", "Quận 3", "Quận 7", "Thủ Đức", "Bình Thạnh", "Gò Vấp"]
